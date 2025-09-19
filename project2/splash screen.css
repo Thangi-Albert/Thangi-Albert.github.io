@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100vh;
+    width: 100vw;
+    background: transparent;
+    overflow: hidden;
+}
+
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    background: transparent;
+}
+#content {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-image: 
+        linear-gradient(rgba(111, 68, 219, 0.842), rgba(111, 68, 219, 0.842)),
+        url("assets/one-arm-gym.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: multiply;
+    margin: 0;
+    padding: 0;
+}
+
+.splash{
+    height: 154px;
+    width: 184px;
+    position: absolute;
+    align-items: center;
+    top:43%;
+    left:27%;
+}
