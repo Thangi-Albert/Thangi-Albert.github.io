@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FitMap — Reset Password</title>
+<link rel="stylesheet" href="forget pass.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+     <img src="assets/Screenshot_2025-08-28_125857-removebg-preview.png" alt="img" class="logo-img">
+    </div>
+  </div>
+
+  <section class="card">
+    <h1>Reset Your Password</h1>
+    <p class="lead">Please enter your email address to get a password reset code</p>
+
+    <form id="resetForm" onsubmit="return false;">
+      <label for="email">Enter Email</label>
+      <input id="email" type="email" placeholder="gerachblings@gmail.com" autocomplete="email" />
+
+      <button id="sendBtn" class="send" type="submit">Send Code</button>
+    </form>
+  </section>
+
+<script>
+  const email = document.getElementById('email');
+  const sendBtn = document.getElementById('sendBtn');
+
+  function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  sendBtn.addEventListener('click', () => {
+    const v = (email.value || '').trim();
+    if(!v){
+      alert('Please enter your email address.');
+      email.focus();
+      return;
+    }
+    if(!validEmail(v)){
+      alert('Please enter a valid email address.');
+      email.focus();
+      return;
+    }
+
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Sending...';
+
+    setTimeout(() => {
+      sendBtn.disabled = false;
+      sendBtn.textContent = 'Send Code';
+      alert('A reset code was sent to ' + v + ' (demo).');
+    }, 1000);
+  });
+
+
+
+
+
+
+
+sendBtn.addEventListener('click', () => {
+  const v = (email.value || '').trim();
+  if(!v){
+    alert('Please enter your email address.');
+    email.focus();
+    return;
+  }
+  if(!validEmail(v)){
+    alert('Please enter a valid email address.');
+    email.focus();
+    return;
+  }
+
+  sendBtn.disabled = true;
+  sendBtn.textContent = 'Sending...';
+
+  setTimeout(() => {
+    // Replace card section with code verification form
+    document.querySelector('.card').innerHTML = `
+      <h1>Check Your Indox</h1>
+      <p class="lead">Enter the 5-digit code sent to <b>${v}</b></p>
+      <form id="codeForm" autocomplete="off">
+        <div style="display:flex; gap:10px; justify-content:center; margin-bottom:18px;">
+          <input type="text" maxlength="1" class="code-input" required style="width:40px; height:48px; font-size:28px; text-align:center;" />
+          <input type="text" maxlength="1" class="code-input" required style="width:40px; height:48px; font-size:28px; text-align:center;" />
+          <input type="text" maxlength="1" class="code-input" required style="width:40px; height:48px; font-size:28px; text-align:center;" />
+          <input type="text" maxlength="1" class="code-input" required style="width:40px; height:48px; font-size:28px; text-align:center;" />
+          <input type="text" maxlength="1" class="code-input" required style="width:40px; height:48px; font-size:28px; text-align:center;" />
+        </div>
+        <button id="verifyBtn" class="send" type="submit">Verify Code</button>
+      </form>
+      <div style="text-align:center; margin-top:14px;">
+        <a href="#" id="resendCode" style="color:#6f44db; text-decoration:underline; font-size:13px;">Resend code</a>
+      </div>
+    `;
+
+    // Autofocus next input
+    const codeInputs = document.querySelectorAll('.code-input');
+    codeInputs.forEach((input, idx) => {
+      input.addEventListener('input', () => {
+        if(input.value && idx < codeInputs.length - 1){
+          codeInputs[idx + 1].focus();
+        }
+      });
+    });
+
+    // Handle code verification (demo)
+    document.getElementById('codeForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const code = Array.from(codeInputs).map(i=>i.value).join('');
+      if(code.length !== 5){
+        alert('Please enter the 5-digit code.');
+        codeInputs[0].focus();
+        return;
+      }
+      alert('Code verified! (demo)');
+      // Redirect or show next step here
+    });
+
+    // Attach the resendCode event listener here, after the element exists
+    const resendCode = document.getElementById('resendCode');
+    resendCode.addEventListener('click', function(e){
+      e.preventDefault();
+      if (this.classList.contains('disabled')) return;
+
+      this.classList.add('disabled');
+      this.textContent = 'Resend available in 60s';
+      let seconds = 60;
+      const interval = setInterval(() => {
+        seconds--;
+        this.textContent = `Resend available in ${seconds}s`;
+        if (seconds <= 0) {
+          clearInterval(interval);
+          this.classList.remove('disabled');
+          this.textContent = 'Resend code';
+        }
+      }, 1000);
+
+      alert('A new code was sent to ' + v + ' (demo).');
+    });
+
+    sendBtn.disabled = false;
+    sendBtn.textContent = 'Send Code';
+  }, 1000);
+});
+</script>
+</body>
+</html>

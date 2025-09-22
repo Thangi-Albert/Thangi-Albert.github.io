@@ -1,0 +1,143 @@
+    :root{
+      --accent:#2b1b58; /* dark purple */
+      --accent-2:#4e3aa6; /* lighter purple */
+      --muted:#484859;
+      --bg:#0b0b12;
+    }
+    *{
+        box-sizing:border-box
+    }
+    html,body{
+        height:100%;
+        margin:0;
+        font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+         background:white;
+        }
+
+    /* Page layout */
+    .screen{
+      height:100vh;
+      width:100vw;
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
+      justify-content:flex-start;
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* Top skip */
+    .skip{
+      position:absolute;
+      right:18px;
+      top:18px;
+      color:white;
+      font-weight:600;
+      z-index:8;
+      opacity:.95;
+      cursor:pointer;
+    }
+
+    /* Hero with background image (top 60%) */
+    .hero{
+      flex:0 0 58%;
+      background-size:cover;
+      background-position:center top;
+      position:relative;
+      display:flex;align-items:flex-start;
+      justify-content:center;
+    }
+    /* subtle dark overlay to make content pop */
+    .hero::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(5,6,12,0.25), rgba(5,6,12,0.35));
+    }
+
+    /* bottom card / sheet */
+    .sheet{
+      flex:1 1 42%;
+      background:white;
+      border-top-left-radius:32px;
+      border-top-right-radius:32px;
+      padding:36px 28px 24px 28px;
+      position:relative;
+      transform:translateY(-36px);
+      box-shadow:0 -8px 30px rgba(10,8,30,0.15);
+      display:flex;flex-direction:column;
+      align-items:center;text-align:center;
+      z-index:10;
+    }
+
+    h1{
+        font-family:Merriweather, serif;
+        margin:6px 0 8px;
+        color:#0b0830;
+        font-size:32px;
+        font-weight: bold;
+    }
+    p.lead{
+        margin:0 0 26px;
+        color:var(--muted);
+        font-size:16px;
+        line-height:1.5
+    }
+
+    /* dots */
+    .dots{
+        display:flex;
+        gap:10px;
+        margin:8px 0 24px
+    }
+    .dot{
+        width:10px;
+        height:10px;
+        border-radius:50%;
+        background:#a6a6b6;
+        opacity:.6
+    }
+    .dot.active{
+        width:12px;
+        height:12px;
+        background:var(--accent);
+        opacity:1;
+        box-shadow:0 4px 12px rgba(75,45,140,0.18)
+    }
+
+    /* next button */
+    .btn-next{
+        display:inline-block;
+        padding:18px 90px;
+        border-radius:28px;
+        background:linear-gradient(90deg,var(--accent),var(--accent-2));
+        color:white;
+        font-weight:600;
+        border:none;
+        cursor:pointer;
+        margin-top: 20px;
+        box-shadow:0 8px 18px rgba(75,45,140,0.18)
+    }
+
+
+    /* make it look like the image has a framed neon sign center */
+    .hero .ghost-sign{
+        position:absolute;
+        top:22%;left:50%;
+        transform:translateX(-50%);
+        z-index:2;
+        pointer-events:none;
+    }
+
+    /* responsive tweaks */
+    @media (min-width:720px){
+      .sheet{
+        max-width:560px;
+        margin:0 auto;
+        border-radius:36px;
+        padding:44px
+    }
+      h1{
+        font-size:24px
+    }
+    }

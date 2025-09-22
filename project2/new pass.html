@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FitMap — Reset Password</title>
+<link rel="stylesheet" href="new pass.css">
+<style>
+body {
+  margin: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.header {
+  background: linear-gradient(180deg, #9a84c2, #8b72b8);
+  text-align: center;
+  padding: 32px 0 18px 0;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+.logo-img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border-radius: 16px;
+  background: #fff;
+  display: block;
+  box-shadow: none;
+}
+.card {
+  background: #fff;
+  border-top-left-radius: 34px;
+  border-top-right-radius: 34px;
+  margin-top: -35px;
+  padding: 40px 28px;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.06);
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+h1 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  color: #241447;
+  text-align: center;
+  font-weight: 700;
+}
+p.lead {
+  margin: 0 auto 20px;
+  font-size: 14px;
+  color: #6f617f;
+  text-align: center;
+  max-width: 280px;
+  line-height: 1.5;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+label {
+  font-size: 14px;
+  color: #222;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+input[type="password"] {
+  width: 100%;
+  padding: 12px 44px 12px 14px;
+  border-radius: 18px;
+  border: 1.2px solid #cfcbd1;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  background: #f7f6fb;
+}
+input::placeholder {
+  color: #c9c3cc;
+}
+input:focus {
+  border-color: #36205f;
+  box-shadow: 0 4px 12px rgba(54,32,95,0.08);
+}
+.eye-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 0;
+  transition: background 0.2s;
+}
+.eye-btn:active,
+.eye-btn:focus {
+  background: #f0eafd;
+  outline: none;
+}
+.eye-btn svg {
+  width: 22px;
+  height: 22px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.send {
+  background: #36205f;
+  color: #fff;
+  border: none;
+  border-radius: 22px;
+  padding: 13px;
+  width: 100%;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.3s;
+}
+.send:hover {
+  background: #241447;
+}
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <img src="assets/Screenshot_2025-08-28_125857-removebg-preview.png" alt="img" class="logo-img">
+    </div>
+  </div>
+  <section class="card">
+    <h1>Create New Password</h1>
+    <p class="lead">Choose a strong password to keep your account secured.</p>
+    <form id="newPassForm" autocomplete="off">
+      <div class="field">
+        <label for="newPassword">Enter New Password</label>
+        <input type="password" id="newPassword" placeholder="***************" required>
+        <button type="button" class="eye-btn" id="toggleNewPwd" aria-label="Show password">
+          <svg id="eyeOpenNew" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          <svg id="eyeClosedNew" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+            <path d="M17.94 17.94A10 10 0 0 1 12 19c-7 0-11-7-11-7a20.3 20.3 0 0 1 5.59-6.11"></path>
+            <path d="M1 1l22 22"></path>
+            <path d="M9.88 9.88a3 3 0 0 0 4.24 4.24"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="field">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="***************" required>
+        <button type="button" class="eye-btn" id="toggleConfirmPwd" aria-label="Show password">
+          <svg id="eyeOpenConfirm" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          <svg id="eyeClosedConfirm" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+            <path d="M17.94 17.94A10 10 0 0 1 12 19c-7 0-11-7-11-7a20.3 20.3 0 0 1 5.59-6.11"></path>
+            <path d="M1 1l22 22"></path>
+            <path d="M9.88 9.88a3 3 0 0 0 4.24 4.24"></path>
+          </svg>
+        </button>
+      </div>
+      <button type="submit" class="send" id="createPassBtn">Create Password</button>
+    </form>
+  </section>
+  <script>
+    // Toggle for new password
+    const newPwdInput = document.getElementById('newPassword');
+    const toggleNewPwd = document.getElementById('toggleNewPwd');
+    const eyeOpenNew = document.getElementById('eyeOpenNew');
+    const eyeClosedNew = document.getElementById('eyeClosedNew');
+
+    toggleNewPwd.addEventListener('click', () => {
+      if (newPwdInput.type === 'password') {
+        newPwdInput.type = 'text';
+        eyeOpenNew.style.display = 'none';
+        eyeClosedNew.style.display = 'inline';
+        toggleNewPwd.setAttribute('aria-label', 'Hide password');
+      } else {
+        newPwdInput.type = 'password';
+        eyeOpenNew.style.display = 'inline';
+        eyeClosedNew.style.display = 'none';
+        toggleNewPwd.setAttribute('aria-label', 'Show password');
+      }
+    });
+
+    // Toggle for confirm password
+    const confirmPwdInput = document.getElementById('confirmPassword');
+    const toggleConfirmPwd = document.getElementById('toggleConfirmPwd');
+    const eyeOpenConfirm = document.getElementById('eyeOpenConfirm');
+    const eyeClosedConfirm = document.getElementById('eyeClosedConfirm');
+
+    toggleConfirmPwd.addEventListener('click', () => {
+      if (confirmPwdInput.type === 'password') {
+        confirmPwdInput.type = 'text';
+        eyeOpenConfirm.style.display = 'none';
+        eyeClosedConfirm.style.display = 'inline';
+        toggleConfirmPwd.setAttribute('aria-label', 'Hide password');
+      } else {
+        confirmPwdInput.type = 'password';
+        eyeOpenConfirm.style.display = 'inline';
+        eyeClosedConfirm.style.display = 'none';
+        toggleConfirmPwd.setAttribute('aria-label', 'Show password');
+      }
+    });
+
+    // Password match validation
+    document.getElementById('newPassForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const newPwd = newPwdInput.value;
+      const confirmPwd = confirmPwdInput.value;
+      if(newPwd.length < 6){
+        alert('Password should be at least 6 characters.');
+        return;
+      }
+      if(newPwd !== confirmPwd){
+        alert('Passwords do not match.');
+        return;
+      }
+      alert('Password created successfully! (demo)');
+      // Redirect or further logic here
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FitMap — Sign Up</title>
+<link rel="stylesheet" href="sign up page.css">
+</head>
+<body>
+  <div class="frame" role="region" aria-label="FitMap sign up">
+    
+
+    <div class="logo">
+      <div class="dumbbell" aria-hidden="true">
+        <!-- simple dumbbell SVG -->
+        <img class="fig" src="assets/Screenshot 2025-08-28 125857.png" alt="img">
+      </div>
+    </div>
+
+    <div class="welcome">Welcome to FitMap</div>
+    <div class="title">SIGN UP</div>
+
+    <form id="signupForm" onsubmit="return false;">
+      <div class="field">
+        <label for="fullname">Full Names</label>
+        <div class="input">
+          <input id="fullname" type="text" placeholder="Fortune Chinda" autocomplete="name" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email Address</label>
+        <div class="input">
+          <input id="email" type="email" placeholder="gerachblings@gmail.com" autocomplete="email" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="password">Enter Password</label>
+        <div class="input" style="position:relative;">
+          <input id="password" type="password" placeholder="***************" autocomplete="new-password" required>
+          <button type="button" class="eye-btn" id="togglePwd" aria-label="Show password">
+            <!-- eye SVG (toggle) -->
+            <svg id="eyeOpen" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <svg id="eyeClosed" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <path d="M17.94 17.94A10 10 0 0 1 12 19c-7 0-11-7-11-7a20.3 20.3 0 0 1 5.59-6.11"></path>
+              <path d="M1 1l22 22"></path>
+              <path d="M9.88 9.88a3 3 0 0 0 4.24 4.24"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <button class="sign-btn" id="signupBtn" type="submit">Sign Up</button>
+
+      <div class="signin-row">Already have an account?
+        <a href="#" id="signinLink">Sign In</a>
+      </div>
+
+      <div class="terms">
+        <input id="agree" class="checkbox" type="checkbox" />
+        <label for="agree" style="font-size:13px;color:var(--muted);margin:0;">I agree to the <a href="#" style="color:var(--accent);text-decoration:none;font-weight:600;">Terms</a> and <a href="#" style="color:var(--accent);text-decoration:none;font-weight:600;">Privacy Policy</a></label>
+      </div>
+
+      <div class="divider"><span>Or</span></div>
+
+      <button type="button" class="google-btn" id="googleBtn" aria-label="Sign up with Google">
+        <!-- Google-like icon -->
+        <img src="assets/download.png" alt="img" class="google-icon">
+        Sign up account with Google
+      </button>
+
+     <button type="button" class="apple-btn" id="appleBtn" aria-label="Sign up with Apple">
+        <img src="assets/Apple_logo_black.svg" alt="Apple" class="apple-icon">
+        Sign up account with Apple
+      </button>
+
+
+      <div class="legal">By creating an account you agree to FitMap's terms and services.</div>
+    </form>
+  </div>
+
+<script>
+  // Password toggle
+  const pwd = document.getElementById('password');
+  const toggle = document.getElementById('togglePwd');
+  const eyeOpen = document.getElementById('eyeOpen');
+  const eyeClosed = document.getElementById('eyeClosed');
+
+  toggle.addEventListener('click', () => {
+    const isHidden = pwd.type === 'password';
+    pwd.type = isHidden ? 'text' : 'password';
+    eyeOpen.style.display = isHidden ? 'none' : 'block';
+    eyeClosed.style.display = isHidden ? 'block' : 'none';
+    toggle.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+  });
+
+  // Basic form handling (demo)
+  const signupBtn = document.getElementById('signupBtn');
+  const form = document.getElementById('signupForm');
+  signupBtn.addEventListener('click', () => {
+    // simple validation demo
+    const name = document.getElementById('fullname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = pwd.value;
+    const agree = document.getElementById('agree').checked;
+
+    if (!name || !email || !password) {
+      alert('Please fill all fields.');
+      return;
+    }
+    if (!agree) {
+      alert('Please accept the Terms and Privacy Policy.');
+      return;
+    }
+    // simulate success
+    signupBtn.disabled = true;
+  signupBtn.textContent = 'Creating account...';
+  setTimeout(() => {
+    signupBtn.disabled = false;
+    signupBtn.textContent = 'Sign Up';
+    form.reset();
+    pwd.type = 'password';
+    eyeOpen.style.display = 'block';
+    eyeClosed.style.display = 'none';
+    window.location.href = 'login.html'; // Redirect to login page
+  }, 900);
+});
+  // Google button demo
+  document.getElementById('googleBtn').addEventListener('click', () => {
+    alert('Google sign-up demo — integrate your OAuth flow here.');
+  });
+   document.getElementById('appleBtn').addEventListener('click', () => {
+    alert('Apple sign-up demo — integrate your Apple OAuth flow here.');
+  });
+
+  // Sign in link demo
+  document.getElementById('signinLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    alert('Navigate to Sign In screen (demo).');
+  });
+</script>
+</body>
+</html>

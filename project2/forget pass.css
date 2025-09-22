@@ -1,0 +1,129 @@
+ :root{
+    --header-1: #9a84c2;
+    --header-2: #8b72b8;
+    --accent: #36205f;
+    --muted: #6f617f;
+    --input-border: #cfcbd1;
+    font-family: "Georgia", "Times New Roman", serif;
+  }
+
+  body {
+    margin:0;
+    background:#fff;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+  }
+
+  /* header */
+  .header {
+    background: linear-gradient(180deg, var(--header-1), var(--header-2));
+    text-align:center;
+    position:relative;
+    height: 80%;
+    padding-bottom: 60px;
+  }
+
+  .logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 100%;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.logo-img {
+  width: 70%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+  display: block;
+  box-shadow: none;
+}
+
+ 
+  /* white card overlapping */
+  .card {
+    background:#fff;
+    border-top-left-radius:34px;
+    border-top-right-radius:34px;
+    margin-top:-35px; /* overlap effect */
+    padding:40px 28px;
+    box-shadow:0 -4px 12px rgba(0,0,0,0.06);
+    flex:1;
+    width: 100%;
+    z-index: 4;
+    box-sizing:border-box;
+    max-width:400px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  h1 {
+    margin:0 0 8px;
+    margin-top: 35px;
+    font-size:20px;
+    text-transform:capitalize;
+    color:#241447;
+    text-align:center;
+    font-weight:700;
+  }
+  p.lead {
+    margin:0 auto 20px;
+    font-size:13px;
+    color:var(--muted);
+    text-align:center;
+    max-width:280px;
+    line-height:1.5;
+  }
+
+  form{ display:flex; flex-direction:column; gap:14px; }
+
+  label {
+    font-size:14px;
+    color:#222;
+  }
+
+  input[type="email"]{
+    width:100%;
+    padding:12px 14px;
+    border-radius:18px;
+    border:1.2px solid var(--input-border);
+    font-size:14px;
+    outline:none;
+    box-sizing:border-box;
+  }
+  input::placeholder{ color:#c9c3cc; }
+
+  input:focus{
+    border-color:var(--accent);
+    box-shadow:0 4px 12px rgba(54,32,95,0.08);
+  }
+
+  .send {
+    align-self:center;
+    width:160px;
+    padding:12px 18px;
+    border-radius:28px;
+    background: linear-gradient(180deg, var(--accent), #241447);
+    color:#fff;
+    font-weight:600;
+    font-size:15px;
+    border:0;
+    cursor:pointer;
+    box-shadow:0 6px 14px rgba(47,27,98,0.16);
+  }
+  .send:disabled{ 
+    opacity:0.65; cursor:not-allowed;
+     box-shadow:none;
+     }
+
+  #resendCode.disabled {
+  pointer-events: none;
+  color: #aaa !important;
+  text-decoration: none !important;
+  cursor: not-allowed;
+}

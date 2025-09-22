@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitMap Registration</title>
+  <link rel="stylesheet" href="reg-as.css">
+</head>
+<body>
+  <div class="container">
+    <div class="back" onclick="goBack()">&#8592;</div>
+    <div class="card">
+      <h2>Who are you<br> registering as?</h2>
+      <button class="btn" onclick="register('Gym Centre')">A Gym Centre</button>
+      <button class="btn" onclick="register('Gym User')">A Gym User</button>
+      <div class="logo">
+  <img src="assets/Screenshot 2025-08-28 125857.png" alt="FitMap Logo" class="logo-icon" style="width:60%; height:auto; margin-bottom:5px;">
+</div>
+    </div>
+  </div>
+
+  <script>
+    function register(type) {
+      alert("You selected: " + type);
+  
+    }
+    function register(type) {
+  if (type === 'Gym User') {
+    window.location.href = "sign up page.html";
+  } else {
+    alert("You selected: " + type);
+    // You can redirect for Gym Centre if needed
+  }
+}
+
+    function goBack() {
+      alert("Go back clicked!");
+      // window.history.back();
+    }
+  </script>
+</body>
+</html>
