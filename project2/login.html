@@ -88,6 +88,36 @@
   e.preventDefault();
   window.location.href = 'forget pass.html';
 });
+
+
+
+document.querySelector('.btn').addEventListener('click', function(e) {
+  e.preventDefault();
+
+  // Show "login successful" message
+  const msg = document.createElement('div');
+  msg.textContent = 'Login successful';
+  msg.style.position = 'fixed';
+  msg.style.top = '30%';
+  msg.style.left = '40%';
+  msg.style.transform = 'translate(-50%, -50%)';
+  msg.style.background = '#fff';
+  msg.style.color = '#36205f';
+  msg.style.padding = '22px 38px';
+  msg.style.borderRadius = '16px';
+  msg.style.boxShadow = '0 4px 24px rgba(54,32,95,0.13)';
+  msg.style.fontSize = '1rem';
+  msg.style.fontWeight = '600';
+  msg.style.zIndex = '9999';
+  msg.style.width = "90%"
+  document.body.appendChild(msg);
+
+  // Redirect after 1.5 seconds
+  setTimeout(() => {
+    window.location.href = 'home page.html';
+  }, 1500);
+});
+
   </script>
 
 </body>
