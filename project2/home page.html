@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FitMap — Home</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="home page.css">
+</head>
+<body>
+  <div class="wrap" role="main" aria-label="FitMap Home">
+
+    <!-- Top row -->
+    <div class="top-row">
+      <div class="avatar" title="Profile">
+        <img src="assets/istockphoto-1495088043-612x612.jpg" alt="profile">
+      </div>
+
+      <div class="location">
+        <div class="title">My Location</div>
+        <div id="cityDropdownToggle" class="sub" tabindex="0" aria-haspopup="listbox">
+          <span id="currentCity">Port Harcourt</span>
+          <svg id="dropdownArrow" width="14" height="14" viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        </div>
+        <div id="cityDropdown" role="listbox">
+          <div class="city-option" data-city="Port Harcourt">Port Harcourt</div>
+          <div class="city-option" data-city="Ibadan">Ibadan</div>
+          <div class="city-option" data-city="Benin City">Benin City</div>
+          <div class="city-option" data-city="Aba">Aba</div>
+          <div class="city-option" data-city="Calabar">Calabar</div>
+          <div class="city-option" data-city="Uyo">Uyo</div>
+        </div>
+      </div>
+
+      <button class="bell" aria-label="Notifications" title="Notifications">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#36205f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 17H9"></path>
+          <path d="M18 8a6 6 0 10-12 0v4l-2 2v1h16v-1l-2-2V8"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Search -->
+    <div class="search-row">
+      <div class="search" role="search">
+        <svg id="hide" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a8fb3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="6"></circle>
+          <path d="M21 21l-4.35-4.35"></path>
+        </svg>
+        <input id="searchInput" placeholder="Search" aria-label="Search"/>
+        <button id="voice" title="Voice search" style="border:0;background:none;cursor:pointer;">
+          
+        </button>
+      </div>
+
+      <button class="filter-btn" id="filterBtn" aria-label="Filters" title="Filter">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6f617f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16"></path>
+          <path d="M7 12h10"></path>
+          <path d="M10 18h4"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Hero card -->
+    <div class="hero" role="region" aria-label="Featured gym">
+      <div class="content">
+        <h2>The Best<br>That You<br>Can Get</h2>
+        <a href="#" class="cta" id="findGymBtn">Find Gym</a>
+      </div>
+    </div>
+
+    <!-- Section + pills -->
+    <div class="section-row">
+      <h3>Features</h3>
+      <div class="see-all">See All</div>
+    </div>
+
+    <div class="pills" id="pills">
+      <button class="pill active" data-filter="all">All</button>
+      <button class="pill" data-filter="nearby">Nearby Gym</button>
+      <button class="pill" data-filter="upper">Massive Upper Body</button>
+      <button class="pill" data-filter="lower">Leg Day</button>
+      <button class="pill" data-filter="yoga">Yoga</button>
+    </div>
+
+    <!-- vertical gym list -->
+
+<div class="vertical-list" id="gyms">
+  <div class="gym-card">
+    <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=13b6d1c75b3fd3c9868b9b2d3a865e6f" alt="Nearby gym">
+    <div class="body">
+      <div class="title">Nearby Gym</div>
+      <button class="explore" data-id="1">Explore</button>
+    </div>
+  </div>
+
+  <div class="gym-card">
+    <img src="https://images.unsplash.com/photo-1571019613914-85f342c8e0f6?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=6f7b2c64a0d3ea6d9f1abf5b1f9c2eab" alt="Upper body">
+    <div class="body">
+      <div class="title">Massive Upper Body</div>
+      <button class="explore" data-id="2">Explore</button>
+    </div>
+  </div>
+
+  <div class="gym-card">
+    <img src="https://images.unsplash.com/photo-1546484959-fb6cfb4375f2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=8b1d732d2f8c9d7c6ea1a2b5d97a5e3b" alt="Yoga">
+    <div class="body">
+      <div class="title">Leg Day</div>
+      <button class="explore" data-id="3">Explore</button>
+    </div>
+  </div>
+
+
+  <div class="gym-card">
+    <img src="https://images.unsplash.com/photo-1546484959-fb6cfb4375f2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=8b1d732d2f8c9d7c6ea1a2b5d97a5e3b" alt="Yoga">
+    <div class="body">
+      <div class="title"> Yoga</div>
+      <button class="explore" data-id="4">Explore</button>
+    </div>
+  </div>
+</div>
+
+
+    <!-- optional second list below -->
+    <div style="height:18px"></div>
+
+    <!-- Bottom nav -->
+    <div class="bottom-nav" role="navigation" aria-label="Bottom navigation">
+      <div class="nav-pill">
+        <div class="icons">
+          <div class="nav-icon" data-tab="home" title="Home">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6v8a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z"/></svg>
+          </div>
+
+          <div class="nav-icon" data-tab="browse" title="Browse">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          </div>
+
+          <div class="nav-icon" data-tab="discover" title="Discover">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a8 8 0 10-14.8 0"/></svg>
+          </div>
+
+          <div class="nav-icon" data-tab="profile" title="Profile">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+  // Simple interactivity: pill active state, simple search filter demo, explore buttons
+  document.querySelectorAll('.pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      // demo: scroll gyms to start when selecting different pill
+      document.getElementById('gyms').scrollTo({ left: 0, behavior: 'smooth' });
+    });
+  });
+
+  document.getElementById('searchInput').addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.gym-card');
+    cards.forEach(card => {
+      const title = card.querySelector('.title').textContent.toLowerCase();
+      if (!q || title.includes(q)) card.style.display = '';
+      else card.style.display = 'none';
+    });
+  });
+
+  document.querySelectorAll('.explore').forEach(btn => {
+    btn.addEventListener('click', (ev) => {
+      const id = btn.getAttribute('data-id');
+      alert('Open gym details (demo) — id: ' + id);
+    });
+  });
+
+  document.getElementById('findGymBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    alert('Find Gym CTA (demo)');
+  });
+
+  // bottom nav click demo
+  document.querySelectorAll('.nav-icon').forEach(icon => {
+    icon.addEventListener('click', () => {
+      document.querySelectorAll('.nav-icon').forEach(i => i.style.opacity = 0.6);
+      icon.style.opacity = 1;
+      alert('Switch tab: ' + icon.getAttribute('data-tab'));
+    });
+  });
+
+  // City dropdown toggle
+  const cityToggle = document.getElementById('cityDropdownToggle');
+  const cityDropdown = document.getElementById('cityDropdown');
+  const currentCity = document.getElementById('currentCity');
+  const dropdownArrow = document.getElementById('dropdownArrow');
+
+  cityToggle.addEventListener('click', () => {
+    const isOpen = cityDropdown.style.display === 'block';
+    cityDropdown.style.display = isOpen ? 'none' : 'block';
+    dropdownArrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+  });
+
+  // Select city
+  document.querySelectorAll('.city-option').forEach(option => {
+    option.addEventListener('click', function() {
+      currentCity.textContent = this.textContent;
+      cityDropdown.style.display = 'none';
+      dropdownArrow.style.transform = 'rotate(0deg)';
+    });
+  });
+
+  // Hide dropdown if clicked outside
+  document.addEventListener('click', function(e) {
+    if (!cityToggle.contains(e.target) && !cityDropdown.contains(e.target)) {
+      cityDropdown.style.display = 'none';
+      dropdownArrow.style.transform = 'rotate(0deg)';
+    }
+  });
+
+  document.getElementById('hide').addEventListener('click', function() {
+  hideTopAndHero();
+});
+
+function hideTopAndHero() {
+  const topRow = document.querySelector('.top-row');
+  const hero = document.querySelector('.hero');
+  if (topRow) topRow.style.display = 'none';
+  if (hero) hero.style.display = 'none';
+}
+</script>
+</body>
+</html>

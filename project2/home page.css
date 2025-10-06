@@ -1,0 +1,338 @@
+:root{
+    --bg: #faf8fb;
+    --card-bg: #fff;
+    --muted: #7a6f86;
+    --accent: #36205f;
+    --purple-1: #7f6bb2;
+    --purple-2: #9a84c2;
+    --pill-border: rgba(54,32,95,0.08);
+    --shadow-lg: 0 12px 30px rgba(15,12,30,0.08);
+    --radius: 18px;
+    --radius-lg: 26px;
+    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+
+  /* --- Basic page --- */
+  html,body
+  {
+    height:100%;
+    margin:0;
+    background:var(--bg);-webkit-font-smoothing:antialiased; 
+    -moz-osx-font-smoothing:grayscale;
+}
+  .wrap{
+     max-width:480px;
+      margin:18px auto;
+       padding:14px;
+        box-sizing:border-box; }
+
+  /* --- Top row: avatar, location, bell --- */
+  .top-row{ 
+    display:flex; 
+    align-items:center;
+     gap:12px;
+      margin-bottom:12px; }
+  .avatar{
+    width:48px; 
+    height:48px;
+    padding: 0;
+     border-radius:999px;
+      overflow:hidden;
+       flex:0 0 48px;
+    box-shadow:0 4px 12px rgba(15,12,30,0.06);
+     border:3px solid #fff;
+  }
+  .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  .location {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  position: relative;
+  min-width: 0;
+}
+.location .title{ font-weight:700; color:#1b1325; font-size:15px; margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.location .sub{ font-size:12px; color:var(--muted); display:flex; gap:8px; align-items:center; }
+
+#cityDropdownToggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 4px 0;
+  outline: none;
+  transition: color 0.2s;
+}
+
+#cityDropdownToggle:hover,
+#cityDropdownToggle:focus {
+  color: var(--accent);
+}
+
+#dropdownArrow {
+  margin-left: 6px;
+  transition: transform 0.2s;
+}
+
+#cityDropdown {
+  display: none;
+  position:absolute;
+  z-index:10;
+  top:100%;
+  left:0;
+  right:0;
+  margin-top:4px;
+  padding:8px 0;
+  border-radius:12px;
+  background:var(--card-bg);
+  box-shadow:0 8px 20px rgba(15,12,30,0.08);
+  overflow:hidden;
+  backdrop-filter:blur(10px);
+}
+
+.city-option{
+  padding:10px 16px;
+  border-radius:10px;
+  font-size:14px;
+  color:#15121a;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+  transition: background 0.2s;
+}
+.city-option:hover{ background:rgba(54,32,95,0.04); }
+
+  .bell{
+    width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
+    box-shadow:0 6px 18px rgba(15,12,30,0.04);
+    flex:0 0 44px;
+    cursor:pointer;
+  }
+
+  /* --- Search row --- */
+  .search-row{ display:flex; gap:10px; margin:12px 0 18px; align-items:center; }
+  .search{
+    flex:1;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:var(--card-bg);
+    padding:10px 14px;
+    border-radius:999px;
+    border:1px solid rgba(15,12,30,0.04);
+    box-shadow:0 6px 20px rgba(15,12,30,0.03);
+  }
+  .search input{
+    border:0; outline:none; width:100%; font-size:14px; color:#222;
+  }
+  .filter-btn{
+    width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+    background:var(--card-bg); border:1px solid rgba(15,12,30,0.04); cursor:pointer;
+  }
+
+  /* --- Hero / featured card --- */
+  .hero{
+    background-image: url('assets/woman-squat.jpg');
+    background-position: cover;
+    background-repeat: none;
+    background-size: cover;
+    border-radius:18px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:var(--shadow-lg);
+    margin-bottom:20px;
+    height: 33vh;
+    padding-bottom: 0;
+  }
+  .hero-img{ width:100%; height:100%; object-fit:cover; display:block; filter:contrast(1.02); }
+ .hero .content {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  max-width: 95%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 140px;
+}
+  .hero h2{ 
+    font-family: Georgia, "Times New Roman", serif; 
+    margin:0 0 6px; 
+    font-size:20px;
+     line-height:1.05; 
+     letter-spacing: 1.2px;
+     color: rgb(255, 252, 254)
+     }
+  .hero .cta{
+    display:inline-block; margin-top:10px; background:var(--card-bg); color:var(--accent); padding:8px 12px; border-radius:999px; font-weight:700; font-size:13px;
+    box-shadow:0 8px 20px rgba(15,12,30,0.12); text-decoration:none;
+  }
+
+  /* --- section header & pills --- */
+  .section-row{ display:flex; justify-content:space-between; align-items:center; margin:8px 4px; }
+  .section-row h3{ margin:0; font-size:16px; color:#15121a; }
+  .see-all{ font-size:13px; color:var(--muted); cursor:pointer; }
+
+  .pills{
+    display:flex;
+    gap:10px;
+    overflow:auto;
+    padding:12px 4px 18px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .pill{
+    padding:8px 14px;
+    border-radius:999px;
+    border:1px solid var(--pill-border);
+    background:linear-gradient(180deg,#fff,#fff);
+    font-size:13px;
+    color:#2b1b40;
+    white-space:nowrap;
+    cursor:pointer;
+  }
+  .pill.active{ background:linear-gradient(90deg,var(--purple-1),var(--purple-2)); color:#fff; box-shadow:0 8px 18px rgba(54,32,95,0.12); border:0; }
+
+
+.vertical-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 18px 0;
+}
+
+.gym-card {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 160px;
+  height: 180px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(54,32,95,0.07);
+  overflow: hidden;
+  margin-bottom: 0;
+  padding: 0;
+  transition: box-shadow 0.2s;
+  background-size: cover;
+  background-position: center;
+}
+
+.gym-card img {
+  display: none;
+}
+
+.gym-card .body {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 64%;
+  margin: 0 0 0px 0px;
+  padding: 18px 22px 16px 18px;
+  border-radius: 14px;
+  max-width: 75%;
+  box-shadow: 0 2px 8px rgba(54,32,95,0.10);
+}
+
+.gym-card .title {
+  font-size: 1.18rem;
+  font-weight: 700;
+   color: white;
+}
+
+.gym-card .explore {
+  align-self: flex-start;
+  background: #6f4ef6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-weight: 500;
+}
+
+.gym-card .explore:hover {
+  background: #5436c7;
+}
+
+/* Set background images for each card using nth-child */
+.vertical-list .gym-card:nth-child(1) {
+  background-image: url('assets/gym-center.jpg');
+}
+.vertical-list .gym-card:nth-child(2) {
+  background-image: url('assets/woman-and-man-gym.jpg');
+}
+.vertical-list .gym-card:nth-child(3) {
+  background-image: url('assets/woman-squat.jpg');
+}
+.vertical-list .gym-card:nth-child(4) {
+  background-image: url('assets/man-hand-img.jpg');
+}
+
+
+  .bottom-nav{
+    position:sticky;
+    
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    padding:12px;
+    background:transparent;
+    margin-top:8px;
+  }
+  .nav-pill{
+    display:flex;
+    gap:18px;
+    align-items:center;
+    justify-content:center;
+    padding:10px 20px;
+    border-radius:20px;
+    background:linear-gradient(90deg,var(--purple-1),var(--purple-2));
+    color:#fff;
+    box-shadow:0 14px 30px rgba(54,32,95,0.12);
+    min-width:260px;
+    max-width:100%;
+  }
+
+
+.nav-icon.active {
+  background: #fff;
+  color: var(--purple-1);
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(127,107,178,0.13);
+  opacity: 1;
+  transition: background 0.2s, color 0.2s;
+}
+  .nav-pill .icons{ 
+    display:flex;
+     gap:26px; 
+     align-items:center; 
+     width:100%;
+      justify-content:space-around; 
+     opacity:0.98; 
+    }
+  .nav-icon{
+     width:28px;
+     height:28px; 
+    display:flex;
+     align-items:center; 
+     justify-content:center;
+      cursor:pointer;
+      color: rgba(127,107,178,0.13);
+       opacity:0.95; }
+
+  /* --- small responsiveness --- */
+  @media (max-width:520px){
+    .wrap{ padding:12px; }
+    .hero img{ height:200px; }
+    .gym-card{ min-width:220px; }
+  }
