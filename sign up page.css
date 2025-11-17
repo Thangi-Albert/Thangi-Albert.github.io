@@ -1,0 +1,277 @@
+ *{
+    margin: 0;
+    padding: 0;
+ }:root{
+    --bg:#ffffff;
+    --accent:#2f1b62; /* deep purple */
+    --muted:#6b6b6b;
+    --input-bg:#fff;
+    --border:#d6d6d6;
+    --radius:28px;
+    --card-radius:22px;
+    font-family: "Georgia", "Times New Roman", serif;
+  }
+
+  /* Page background sized to phone-like container */
+  body{
+    margin:0;
+    padding: none;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(180deg,#fafafa 0%, #fff 100%);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* Phone-like container */
+  .frame{
+    width:100%;
+    background:var(--bg);
+    border-radius:34px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    padding:28px 28px 32px;
+    box-sizing:border-box;
+    border:1px solid rgba(0,0,0,0.04);
+  }
+
+
+ .fig {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: none;
+}
+
+  .logo{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+   margin-top: 0;
+  margin-bottom: 4px;
+
+  }
+
+  /* dumbbell icon */
+  .dumbbell{
+    width:100%;
+    max-height:200px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .brand{
+    color:var(--accent);
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:0.2px;
+  }
+
+  .welcome{
+    text-align:center;
+    color:var(--muted);
+     margin-top: 2px;
+  margin-bottom: 2px;
+    font-size:14px;
+  }
+
+  .title{
+    text-align:center;
+    font-weight:700;
+    color:#222;
+     margin: 0 0 6px 0;
+    
+    letter-spacing:0.8px;
+  }
+.google-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 8px;
+  display: inline-block;
+}
+  form {
+  width: 100%;
+  height: 80vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+  .field{
+    margin-bottom:14px;
+    font-size:13px;
+  }
+
+  label{
+    display:block;
+    margin-bottom:8px;
+    color:#333;
+    font-size:13px;
+  }
+
+  .input{
+    position:relative;
+    display:flex;
+    align-items:center;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"]{
+    width:100%;
+    padding:14px 16px;
+    padding-right:46px;
+    border-radius:18px;
+    border:1px solid var(--border);
+    background:var(--input-bg);
+    font-size:14px;
+    outline:none;
+    box-sizing:border-box;
+    transition:box-shadow .15s, border-color .15s;
+  }
+  input:focus{
+    border-color:var(--accent);
+    box-shadow:0 4px 14px rgba(47,27,98,0.06);
+  }
+
+  .eye-btn{
+    position:absolute;
+    right:8px;
+    background:transparent;
+    border:none;
+    height:40px;
+    width:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    border-radius:12px;
+  }
+  .eye-btn svg{ width:18px; height:18px; opacity:0.8; }
+
+  .sign-btn{
+    width:100%;
+    margin-top:12px;
+    padding:12px 18px;
+    border-radius:28px;
+    background:linear-gradient(180deg,var(--accent), #2b1352);
+    color:#fff;
+    font-weight:600;
+    border:0;
+    cursor:pointer;
+    font-size:16px;
+    box-shadow:0 8px 18px rgba(47,27,98,0.12);
+  }
+  .sign-btn:active{ transform:translateY(1px); }
+
+  .signin-row{
+    text-align:center;
+    margin-top:12px;
+    font-size:13px;
+    color:var(--muted);
+  }
+  .signin-row a{
+    color:var(--accent);
+    text-decoration:none;
+    margin-left:6px;
+    font-weight:600;
+  }
+
+  .terms{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    margin-top:20px;
+    font-size:13px;
+    color:var(--muted);
+  }
+
+  .checkbox{
+    width:18px;
+    height:18px;
+    border-radius:4px;
+    border:1px solid var(--border);
+  }
+
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:18px 0 8px;
+  }
+  .divider::before, .divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:#eee;
+  }
+  .divider span{ font-size:13px; color:#888; }
+
+  .google-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    justify-content:center;
+    width:100%;
+    padding:10px 12px;
+    border-radius:18px;
+    border:1px solid var(--border);
+    background:#fff;
+    cursor:pointer;
+    font-size:14px;
+  }
+.apple-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s;
+  margin: 10px 0 0 0;
+}
+
+.apple-btn:hover {
+  background: #222;
+}
+
+.apple-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+  /* small legal text */
+  .legal{
+    font-size:12px;
+    color:#999;
+    margin-top:12px;
+    text-align:center;
+  }
+
+  /* small responsiveness */
+  @media (max-width:380px){
+    .frame{ padding:22px; width:340px; }
+    .dumbbell{ width:72px; }
+  }

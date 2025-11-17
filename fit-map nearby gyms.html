@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitMap - Nearby Gyms</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="nearby-gyms-section">
+        <div class="nearby-gym-title">Nearby Gym</div>
+        <div class="nearby-gyms-hero-section">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay">
+                <h1 class="nearby-gyms-hero-title">Nearby Gym Centres</h1>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="feature-filters">
+                <button class="filter-chip" data-category="all" onclick="filterGyms('all', event)">All</button>
+                <button class="filter-chip active" data-category="nearby" onclick="filterGyms('nearby', event)">Nearby Gym</button>
+                <button class="filter-chip" data-category="upper" onclick="filterGyms('upper', event)">Massive Upper Body</button>
+                <button class="filter-chip" data-category="training" onclick="filterGyms('training', event)">Training Schedule</button>
+            </div>
+
+            <div class="gym-list" id="gymList">
+                <!-- Gyms will be dynamically loaded here -->
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-item" data-page="home" onclick="navigateTo('home', event)">
+                <a href="./fit-map home dashboard.html">
+                    <img src="./Resources/Resource Icons/icons8-home-50.png" alt="home-icon">
+                </a>
+            </div>
+            <div class="nav-item active" data-page="explore" onclick="navigateTo('explore', event)">
+                <a href="./fit-map nearby gyms.html">
+                    <img src="./Resources/Resource Icons/icons8-four-squares-50.png" alt="explore-icon">
+                </a>
+            </div>
+            <div class="nav-item" data-page="location" onclick="navigateTo', event)">
+                <a href="fit-map search gyms.html">
+                    <img src="./Resources/Resource Icons/icons8-location-target-50.png" alt="location-icon">
+                </a>
+            </div>
+            <div class="nav-item" data-page="profile" onclick="navigateTo('profile', event)">
+                <a href="./fit-map user profile.html">
+                    <img src="./Resources/Resource Icons/icons8-profile-50.png" alt="profile-icon">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gym data - in a real app this would come from an API
+        const gymsData = [
+            {
+                id: 1,
+                name: 'Sky Fitness Gym',
+                location: 'Woji, Port Harcourt',
+                distance: '1.4 km',
+                description: 'Good environment and nice equipment',
+                image: './Resources/Resource Images/1757765151611.Screenshot_20250913-113051.jpg',
+                category: 'nearby',
+                rating: 4.5,
+                facilities: ['Cardio', 'Weights', 'Personal Training']
+            },
+            {
+                id: 2,
+                name: 'GoWellness Resort',
+                location: 'Rumuogba, Port Harcourt',
+                distance: '4.3 km',
+                description: 'Large aerobic space indoor, and a complete fitness center',
+                image: './Resources/Resource Images/1757765497532.Screenshot_20250913-113008.jpg',
+                category: 'nearby',
+                rating: 4.7,
+                facilities: ['Aerobics', 'Swimming', 'Spa']
+            },
+            {
+                id: 3,
+                name: 'Charlie\'s Total Fitness Centre',
+                location: 'Rumuibekwe, Port Harcourt',
+                distance: '3.7 km',
+                description: 'Large aerobic space indoor, and a complete fitness suite',
+                image: './Resources/Resource Images/1757765151611.Screenshot_20250913-113051.jpg',
+                category: 'upper',
+                rating: 4.3,
+                facilities: ['Upper Body Training', 'CrossFit', 'Boxing']
+            },
+            {
+                id: 4,
+                name: 'Gardenia\'s Gymnasium',
+                location: 'Elelenwo, Port Harcourt',
+                distance: '5.9 km',
+                description: 'Captivating aerobic space indoor, and a complete setup',
+                image: './Resources/Resource Images/1757765113098.Screenshot_20250913-113107.jpg',
+                category: 'training',
+                rating: 4.4,
+                facilities: ['Group Classes', 'Personal Coaching', 'Nutrition']
+            },
+            {
+                id: 5,
+                name: 'Pawa Fitness Centre',
+                location: '2nd Artillery, Port Harcourt',
+                distance: '7.3 km',
+                description: 'Large aerobic space indoor, and a complete gym experience',
+                image: './Resources/Resource Images/1757765218549.1757765192791.Screenshot_20250913-113042.jpg',
+                category: 'upper',
+                rating: 4.6,
+                facilities: ['Strength Training', 'HIIT', 'Functional Training']
+            }
+        ];
+
+        
+
+            // Load gyms
+            loadGyms('nearby');
+            
+            // Set active nav item
+            setActiveNavItem('explore');
+        });
+
+        function loadGyms(category = 'all') {
+            const gymList = document.getElementById('gymList');
+            gymList.innerHTML = ''; // Clear existing gyms
+            
+            // Filter gyms by category
+            let filteredGyms = gymsData;
+            if (category !== 'all') {
+                filteredGyms = gymsData.filter(gym => gym.category === category);
+            }
+            
+            // Sort by distance (nearest first)
+            filteredGyms.sort((a, b) => {
+                const distA = parseFloat(a.distance);
+                const distB = parseFloat(b.distance);
+                return distA - distB;
+            });
+            
+            // Display gyms
+            if (filteredGyms.length === 0) {
+                gymList.innerHTML = `
+                    <div style="text-align: center; padding: 40px 20px; color: #666;">
+                        <p style="font-size: 18px; margin-bottom: 10px;">No gyms found</p>
+                        <p style="font-size: 14px;">Try selecting a different filter</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            filteredGyms.forEach(gym => {
+                const gymCard = document.createElement('div');
+                gymCard.className = 'gym-card';
+                gymCard.onclick = () => selectGym(gym);
+                
+                gymCard.innerHTML = `
+                    <div class="gym-image" style="background: url('${gym.image}') center/cover;"></div>
+                    <div class="gym-info">
+                        <div class="gym-name">${gym.name}</div>
+                        <div class="gym-location">${gym.location} · ${gym.distance}</div>
+                        <div class="gym-description">${gym.description}</div>
+                    </div>
+                `;
+                
+                gymList.appendChild(gymCard);
+            });
+            
+            // Show count
+            showToast(`Showing ${filteredGyms.length} gym${filteredGyms.length !== 1 ? 's' : ''}`);
+        }
+
+        function filterGyms(category, event) {
+            // Update active filter
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.classList.remove('active');
+            });
+            
+            if (event && event.target) {
+                event.target.classList.add('active');
+            } else {
+                document.querySelector(`[data-category="${category}"]`).classList.add('active');
+            }
+            
+            // Reload gyms with new filter
+            loadGyms(category);
+        }
+
+        function selectGym(gym) {
+            // Save selected gym to localStorage
+            localStorage.setItem('selectedGym', JSON.stringify(gym));
+            
+            // Show gym details
+            showGymDetails(gym);
+        }
+
+        function showGymDetails(gym) {
+            const details = `
+Gym: ${gym.name}
+Location: ${gym.location}
+Distance: ${gym.distance}
+Rating: ${'⭐'.repeat(Math.floor(gym.rating))} ${gym.rating}
+
+Description: ${gym.description}
+
+Facilities:
+${gym.facilities.map(f => '• ' + f).join('\n')}
+            `;
+            
+            const userChoice = confirm(details + '\n\nWould you like to get directions?');
+            
+            if (userChoice) {
+                showToast(`Getting directions to ${gym.name}...`);
+                // In a real app, this would open maps
+            }
+        }
+
+        function navigateTo(section, event) {
+            if (event) {
+                event.preventDefault();
+            }
+            
+            // Update active nav item
+            setActiveNavItem(section);
+            
+            // Handle navigation
+            switch(section) {
+                case 'home':
+                    window.location.href = './fit-map home dashboard.html';
+                    break;
+                case 'explore':
+                    // Already on explore page
+                    break;
+                case 'location':
+                    showToast('Location features coming soon!');
+                    break;
+                case 'profile':
+                    window.location.href = './fit-map user profile.html';
+                    break;
+            }
+        }
+
+        function setActiveNavItem(page) {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            const activeItem = document.querySelector(`[data-page="${page}"]`);
+            if (activeItem) {
+                activeItem.classList.add('active');
+            }
+        }
+
+        function showToast(message) {
+            const existingToast = document.querySelector('.toast-message');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            const toast = document.createElement('div');
+            toast.className = 'toast-message';
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: rgba(0, 0, 0, 0.8);
+                color: white;
+                padding: 12px 24px;
+                border-radius: 25px;
+                font-size: 14px;
+                z-index: 9999;
+                animation: slideUp 0.3s ease-out;
+            `;
+            toast.textContent = message;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideDown 0.3s ease-out';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Add CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideUp {
+                from {
+                    bottom: 50px;
+                    opacity: 0;
+                }
+                to {
+                    bottom: 100px;
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideDown {
+                from {
+                    bottom: 100px;
+                    opacity: 1;
+                }
+                to {
+                    bottom: 50px;
+                    opacity: 0;
+                }
+            }
+
+            .gym-card {
+                cursor: pointer;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .gym-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
