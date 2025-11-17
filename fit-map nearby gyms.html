@@ -25,7 +25,13 @@
             </div>
 
             <div class="gym-list" id="gymList">
-                <!-- Gyms will be dynamically loaded here -->
+                <div class="gym1">
+
+                </div>
+
+               
+
+                </div>
             </div>
         </div>
 
@@ -40,7 +46,7 @@
                     <img src="./Resources/Resource Icons/icons8-four-squares-50.png" alt="explore-icon">
                 </a>
             </div>
-            <div class="nav-item" data-page="location" onclick="navigateTo', event)">
+            <div class="nav-item" data-page="location" onclick="('navigateTo', event)">
                 <a href="fit-map search gyms.html">
                     <img src="./Resources/Resource Icons/icons8-location-target-50.png" alt="location-icon">
                 </a>
@@ -120,7 +126,6 @@
             
             // Set active nav item
             setActiveNavItem('explore');
-        });
 
         function loadGyms(category = 'all') {
             const gymList = document.getElementById('gymList');
